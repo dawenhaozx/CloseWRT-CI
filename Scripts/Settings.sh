@@ -23,8 +23,3 @@ sed -i "s/hostname='.*'/hostname='$WRT_NAME'/g" $CFG_FILE
 if [ -n "$WRT_PACKAGE" ]; then
 	echo -e "$WRT_PACKAGE" >> ./.config
 fi
-
-# 修复 ndisc6 递归依赖
-if [ -f ./package/network/ipv6/ndisc6/Config.in ]; then
-  sed -i '/select PACKAGE_ndisc6/d' ./package/network/ipv6/ndisc6/Config.in
-fi
